@@ -3,13 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PetService</title>
+    <title>Sistema de Cadastro</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
-        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-        th, td { border: 1px solid #ccc; padding: 10px; }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        form {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            max-width: 400px;
+            margin: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
     </style>
 </head>
 <body>
 
-    <h1>PetService</h1>
+    <h1>Sistema de Cadastro</h1>
+
+    <!-- Formulário de Cadastro -->
+    <form id="cadastroForm">
+        <label for="nome">Nome:</label>
+
+        <input type="text" id="nome" name="nome" required>
+
+
+
+        <label for="email">E-mail:</label>
+
+        <input type="email" id="email" name="email" required>
+
+
+
+        <label for="telefone">Telefone:</label>
+
+        <input type="tel" id="telefone" name="telefone" required>
+
+
+
+        <button type="submit">Cadastrar</button>
+    </form>
+
+    <!-- Tabela de Registros -->
+    <table id="tabelaRegistros">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>E-mail</th>
+                <th>Telefone</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Registros serão adicionados aqui -->
+        </tbody>
+    </table>
+
+    <script>
+        document.getElementById('cadastroForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const nome = document.getElementById('nome').value;
+            const email = document.getElementById('email').value;
+            const telefone = document.getElementById('telefone').value;
+
+            const tabela = document.getElementById('tabelaRegistros').getElementsByTagName('tbody')[0];
+            const novaLinha = tabela.insertRow();
+
+            novaLinha.insertCell(0).textContent = nome;
+            novaLinha.insertCell(1).textContent = email;
+            novaLinha.insertCell(2).textContent = telefone;
+
+            // Limpa o formulário após o cadastro
+            this.reset();
+        });
+    </script>
+
+</body>
+</html>
